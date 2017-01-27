@@ -13,10 +13,7 @@ def ironside():
 
 @app.route('/chezdex')
 def chezdex():
-    try:
-        return "ChezDex Coming Soon"
-        except Exception, e:
-        return str(e)
+    return "chezdex coming soon"
 
 @app.route('/')
 def homepage():
