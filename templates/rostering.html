@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
@@ -10,6 +11,9 @@
   <link href="/static/parallax-template/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="/static/parallax-template/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
+
+
+{% block body %}
 <body>
 
 
@@ -34,8 +38,41 @@
 	  <li class="tab col s3"><a href="#Evening">Evening</a></li>
 	</ul>
       </div>
-      <div id="Afternoon" class="col s12">Saturday Afternoon</div>
-      <div id="Evening" class="col s12">Saturday Evening</div>
+      <div id="Afternoon" class="col s12">
+	<h5> Saturday Afternoon </h5>
+	<table class="highlight">
+	  <thead>
+	    <tr>
+	      <th data-field="id"> First Name </th>
+	      <th data-field="id"> Last Name </th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    {% for item in DAYS['Saturday'][0] %}
+	      <tr>
+		<td> {{ item[0] }} </td>
+		<td> {{ item[1] }} </td>
+
+	      </tr>
+	    {% endfor %}
+	  </tbody>
+	</table>
+      </div>
+      <div id="Evening" class="col s12">
+	<h5> Saturday Evening </h5>
+	
+	<table class="highlight"><thead><tr><th data-field="id"> Name </th></tr></thead>
+	<tbody>
+	{% for item in DAYS['Saturday'][1] %}
+	  <tr>
+	    <td> {{ item[0] }} </td>
+	    <td> {{ item[1] }} </td>
+	  </tr>
+	{% endfor %}
+	</tbody>
+	</table>
+
+      </div>
     </div>
 
     <div id="Sunday" class="col s12">
@@ -45,8 +82,35 @@
 	  <li class="tab col s3"><a href="#SunEvening">Evening</a></li>
 	</ul>
       </div>
-      <div id="SunAfternoon" class="col s12">Sunday Afternoon</div>
-      <div id="SunEvening" class="col s12">Sunday Evening</div>
+      <div id="SunAfternoon" class="col s12">
+	<h5> Sunday Afternoon </h5>	
+	<table class="highlight"><thead><tr><th data-field="id"> Name </th></tr></thead>
+	<tbody>
+	{% for item in DAYS['Sunday'][0] %}
+	  <tr>
+	    <td> {{ item[0] }} </td>
+	    <td> {{ item[1] }} </td>
+	  </tr>
+	{% endfor %}
+	</tbody>
+	</table>
+
+      </div>
+      <div id="SunEvening" class="col s12">
+	<h5> Sunday Evening </h5>
+	
+	<table class="highlight"><thead><tr><th data-field="id"> Name </th></tr></thead>
+	<tbody>
+	{% for item in DAYS['Sunday'][1] %}
+	  <tr>
+	    <td> {{ item[0] }} </td>
+	    <td> {{ item[1] }} </td>
+	  </tr>
+	{% endfor %}
+	</tbody>
+	</table>
+
+      </div>
     </div>
 
     <div id="Monday" class="col s12">
@@ -56,47 +120,80 @@
 	  <li class="tab col s3"><a href="#MonEvening">Evening</a></li>
 	</ul>
       </div>
-      <div id="MonAfternoon" class="col s12">Monday Afternoon</div>
-      <div id="MonEvening" class="col s12">Monday Evening</div>
+      <div id="MonAfternoon" class="col s12">
+	<h5> Monday Afternoon </h5>
+	
+	<table class="highlight"><thead><tr><th data-field="id"> Name </th></tr></thead>
+	<tbody>
+	{% for item in DAYS['Monday'][0] %}
+	  <tr>
+	    <td> {{ item[0] }} </td>
+	    <td> {{ item[1] }} </td>
+	  </tr>
+	{% endfor %}
+	</tbody>
+	</table>
+
+      </div>
+      <div id="MonEvening" class="col s12">
+	<h5> Monday Evening </h5>
+	
+	<table class="highlight"><thead><tr><th data-field="id"> Name </th></tr></thead>
+	<tbody>
+	{% for item in DAYS['Monday'][1] %}
+	  <tr>
+	    <td> {{ item[0] }} </td>
+	    <td> {{ item[1] }} </td>
+	  </tr>
+	{% endfor %}
+	</tbody>
+	</table>
+
+
+
+
+      </div>
     </div>
 
 
   </div>
 
-  <br><br><br><br>
+  <br><br><br><br><br><br><br>
 
+
+  <center><h5> Apply for shift </h5></center>
   <div class="row">
-    <form class="col s12">
+    <form action="" method="POST" class="col s12">
       <div class="row">
 	<div class="input-field col s6">
-	  <input id="first_name" type="text" class="validate">
+	  <input id="first_name" name="first_name" type="text" class="validate">
 	  <label for="first_name">First Name</label>
 	</div>
 	<div class="input-field col s6">
-	  <input id="last_name" type="text" class="validate">
+	  <input id="last_name" name="last_name" type="text" class="validate">
 	  <label for="last_name">Last Name</label>
 	</div>
-	<div class="input-field col s6">
-	  <input id="telephone" type="text" class="validate">
+	<div class="input-field col s4">
+	  <input id="telephone" name="telephone" type="text" class="validate">
 	  <label for="telephone">Telephone</label>
 	</div>
-  	<div class="input-field col s6">
-	  <select>
+  	<div class="input-field col s4">
+	  <select name="day">
 	    <option value="" disabled selected>Choose Day</option>
-	    <option value="1"> Saturday </option>
-	    <option value="2"> Sunday </option>
-	    <option value="3"> Monday </option>
+	    <option value="Saturday"> Saturday </option>
+	    <option value="Sunday"> Sunday </option>
+	    <option value="Monday"> Monday </option>
 	  </select>
 	</div>
-	<div class="input-field col s6">
-	  <select multiple>
+	<div class="input-field col s4">
+	  <select multiple id="multisession" name="multisession">
 	    <option value="" disabled selected>Choose Session(s)</option>
-	    <option value="8">Afternoon</option>
-	    <option value="9">Evening</option>
+	    <option value="0">Afternoon</option>
+	    <option value="1">Evening</option>
 	  </select>
 	</div>
-	<div class="input-field col s6">
-	<button class="btn waves-effect waves-light" type="submit" name="action">Submit
+	<div class="input-field col s4">
+	<button class="btn waves-effect waves-light" type="submit" value="Send" name="action">Submit
 	  <i class="material-icons right">send</i>
 	</button>
 	</div>
@@ -104,7 +201,7 @@
     </form>
   </div>  
 
-
+{% endblock %}
 
 <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
