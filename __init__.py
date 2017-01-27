@@ -7,34 +7,37 @@ app = Flask(__name__)
 @app.route('/ironside')
 def ironside():
     try:
-	return render_template("ironside.html")
+        return render_template("ironside.html")
     except Exception, e:
-	return str(e)
+        return str(e)
 
 @app.route('/chezdex')
 def chezdex():
-    return "chezdex coming soon"
+    try:
+        return render_template("chezdex.html")
+    except Exception, e:
+        return str(e)
 
 @app.route('/')
 def homepage():
     try:
-	return render_template("index.html")
+        return render_template("index.html")
     except Exception, e:
-	return str(e)
+        return str(e)
 
 @app.route('/blogs')
 def blog_hub():
     try:
-	return render_template("blog_hub.html")
+        return render_template("blog_hub.html")
     except Exception, e:
-	return str(e)
+        return str(e)
 
 @app.route('/rostering')
 def rostering():
     try:
-	return render_template("rostering.html", DAYS = days)
+        return render_template("rostering.html", DAYS = days)
     except Exception, e:
-	return str(e)
+        return str(e)
 
 
 @app.route('/rostering', methods=["POST","GET"])
@@ -50,9 +53,9 @@ def add_man():
 	s = int(s)
         if len(days[day][s]) < 8:
             days[day][s].append([fn,ln,tp])
-	    flash('added')
-    	else:
-	    flash('that session is full')
+            flash('added')
+        else:
+            flash('that session is full')
 
     return render_template("rostering.html", DAYS=days)
 
