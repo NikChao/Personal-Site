@@ -11,6 +11,13 @@ def ironside():
     except Exception, e:
 	return str(e)
 
+@app.route('/chezdex')
+def chezdex():
+    try:
+        return "ChezDex Coming Soon"
+        except Exception, e:
+        return str(e)
+
 @app.route('/DSITIcodejam')
 def DSITIcodejam():
     try:
@@ -31,7 +38,7 @@ def blog_hub():
 	return render_template("blog_hub.html")
     except Exception, e:
 	return str(e)
-    
+
 @app.route('/rostering')
 def rostering():
     try:
@@ -42,11 +49,11 @@ def rostering():
 
 @app.route('/rostering', methods=["POST","GET"])
 def add_man():
-    
+
     fn = request.form['first_name']
     ln = request.form['last_name']
     tp = request.form['telephone']
-    day = request.form.get('day')    
+    day = request.form.get('day')
     multisession = request.form.getlist('multisession')
 
     for s in multisession:
@@ -56,7 +63,7 @@ def add_man():
 	    flash('added')
     	else:
 	    flash('that session is full')
- 
+
     return render_template("rostering.html", DAYS=days)
 
 
