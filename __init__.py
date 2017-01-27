@@ -18,13 +18,6 @@ def chezdex():
         except Exception, e:
         return str(e)
 
-@app.route('/DSITIcodejam')
-def DSITIcodejam():
-    try:
-	return render_template("codejam.html")
-    except Exception, e:
-	return str(e)
-
 @app.route('/')
 def homepage():
     try:
