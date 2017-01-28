@@ -18,6 +18,10 @@ def chezdex():
     except Exception, e:
         return str(e)
 
+@app.route('/jenkins')
+def jenkins():
+	return "Jenkins"
+
 @app.route('/')
 def homepage():
     try:
